@@ -32,13 +32,26 @@ class IsQuantityOrderDetailCorrectValidator extends ConstraintValidator
 	 */
 	public function validate($entity, Constraint $constraint)
 	{
-		if ( $entity->getOddItem()->getItmStockQuantity() < $entity->getOddQuantity() ) {
+		if ( $entity->getOddItem()->getItmAvailableQuantity() < $entity->getOddQuantity() ) {
 			$this->context->buildViolation($constraint->message)
 				->atPath("oddQuantity")
 				->addViolation();
 		}
-		//check duplicate item
-//        $l_iCountDuplicateItem = 0;
+        //create an array of id item from the movement detail
+        $l_acOrderDetail = $entity->getOddOrder()->getOrdOrderDetailLists();
+        $l_arrIdItem = array();
+        if ( count($l_acOrderDetail) > 0 ) {
+            foreach ($l_acOrderDetail as $l_oddOrderDetail) {
+                $l_arrIdItem[] = $l_oddOrderDetail->getOddItem()->getId();
+            }
+        }
 
+        //check item redundancy
+        $l_arrArrayCount = array_count_values($l_arrIdItem);
+        if ( $l_arrArrayCount[$entity->getOddItem()->getId()] > 1 ) {
+            $this->context->buildViolation($constraint->message_)
+                ->atPath("oddItem")
+                ->addViolation();
+        }
 	}
 }

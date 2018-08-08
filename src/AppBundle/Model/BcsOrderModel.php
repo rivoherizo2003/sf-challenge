@@ -120,10 +120,13 @@ class BcsOrderModel
      * @return array
      */
     public function taskAfterSubmitEditOrder(BcsOrder $p_ordOrder){
-        $l_sRoute = "add-order";
+        $l_sRoute = "edit-order";
         if ( !$p_ordOrder->isOrdIsDraft() ) {
             $p_ordOrder->setOrdStatus(1);
             $l_sRoute = "validate-order";
+            //create an exit stock movement
+            $l_msmMovementStockModel = new BcsMovementModel($this->g_omObjectManager, $this->g_tiTranslator);
+            $l_mvtMovement = $l_msmMovementStockModel->createMovementFromOrderValidated($p_ordOrder);
         }
         $l_arrRet = array(
             'order' => $p_ordOrder,

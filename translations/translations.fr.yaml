@@ -46,7 +46,7 @@ form:
     customer_name: Nom du client
     in_progress: En cours
     achieved: Achevée
-    current_order: Commande enregistrée
+    current_order: Votre commande
     amount_order: Montant commande
     quantity_to_order: Quantité à commander
     order: Commander
@@ -167,6 +167,8 @@ form:
     brand_list: Liste des marques
     add_brand: Créer un marque
     stock_quantity: Quantité en stock
+    available_quantity: Quantité disponible
+    reserved_quantity: Quantité disponible
     date_movement: Date du movement
     type_movement: Type du movement
 

@@ -60,9 +60,23 @@ class BcsItem
     /**
      * @var float
      *
-     * @ORM\Column(name="mvdQuantity", type="float")
+     * @ORM\Column(name="itmReservedQuantity", type="float")
      */
     private $itmReservedQuantity = 0;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="itmAvailableQuantity", type="float")
+     */
+    private $itmAvailableQuantity = 0;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="itmIsInActivity", type="boolean", options={"comment" : "if the product is related to another object"})
+     */
+    private $itmIsInActivity = false;
 
     /**
      * @var float
@@ -370,6 +384,38 @@ class BcsItem
     public function setItmReservedQuantity($itmReservedQuantity)
     {
         $this->itmReservedQuantity = $itmReservedQuantity;
+    }
+
+    /**
+     * @return float
+     */
+    public function getItmAvailableQuantity()
+    {
+        return $this->itmAvailableQuantity;
+    }
+
+    /**
+     * @param float $itmAvailableQuantity
+     */
+    public function setItmAvailableQuantity($itmAvailableQuantity)
+    {
+        $this->itmAvailableQuantity = $itmAvailableQuantity;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isItmIsInActivity()
+    {
+        return $this->itmIsInActivity;
+    }
+
+    /**
+     * @param bool $itmIsInActivity
+     */
+    public function setItmIsInActivity($itmIsInActivity)
+    {
+        $this->itmIsInActivity = $itmIsInActivity;
     }
 
 }

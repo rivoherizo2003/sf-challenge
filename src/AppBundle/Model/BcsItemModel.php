@@ -81,10 +81,10 @@ class BcsItemModel
     }
 
     /**
- * add stock
- * @param $p_arrMovementDetail
- * @return string
- */
+     * add stock
+     * @param $p_arrMovementDetail
+     * @return string
+     */
     public function addStock($p_arrMovementDetail){
         $l_mdmMovementDetailModel = new BcsMovementDetailModel($this->g_omObjectManager, $this->g_tiTranslator);
         if ( count($p_arrMovementDetail) > 0 ) {
@@ -93,18 +93,20 @@ class BcsItemModel
                 $l_itItem = $l_mvdMovementDetail->getMvdItem();
                 if ( !is_null($l_itItem) ) {
                     $l_fStockQuantity = $l_itItem->getItmStockQuantity() + $l_mvdMovementDetail->getMvdQuantity();
+//                    var_dump($l_fStockQuantity);die;
                     $l_itItem->setItmStockQuantity($l_fStockQuantity);
+                    $l_itItem->setItmIsInActivity(true);
+                    $l_itItem->setItmAvailableQuantity($l_fStockQuantity - $l_itItem->getItmReservedQuantity());
+                    try{
+                        $this->g_omObjectManager->flush();
+                    } catch (\Exception $e) {
+                        return $e->getMessage();
+                    }
                 }
                 unset($l_mvdMovementDetail);
             }
 
-            try{
-                $this->g_omObjectManager->flush();
-
-                return 'Stock added';
-            } catch (\Exception $e) {
-                return $e->getMessage();
-            }
+            return 'Stock added';
         }
         else {
             return 'Movement detail empty';
@@ -126,20 +128,21 @@ class BcsItemModel
                     if ( !is_null($l_mvdMovementDetail->getMvdMovement()->getMvtOrder()) ) {
                         $l_fReservedQuantity = $l_itItem->getItmReservedQuantity() - $l_mvdMovementDetail->getMvdQuantity();
                         $l_itItem->setItmReservedQuantity($l_fReservedQuantity);
+                        $l_itItem->setItmIsInActivity(true);
                     }
                     $l_fStockQuantity = $l_itItem->getItmStockQuantity() - $l_mvdMovementDetail->getMvdQuantity();
                     $l_itItem->setItmStockQuantity($l_fStockQuantity);
+                    $l_itItem->setItmAvailableQuantity($l_fStockQuantity - $l_itItem->getItmReservedQuantity());
+                    try{
+                        $this->g_omObjectManager->flush();
+                    } catch (\Exception $e) {
+                        return $e->getMessage();
+                    }
                 }
                 unset($l_mvdMovementDetail);
             }
 
-            try{
-                $this->g_omObjectManager->flush();
-
-                return 'Stock added';
-            } catch (\Exception $e) {
-                return $e->getMessage();
-            }
+            return 'Stock added';
         }
         else {
             return 'Movement detail empty';

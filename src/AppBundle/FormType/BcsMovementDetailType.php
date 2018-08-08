@@ -9,6 +9,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -44,7 +45,7 @@ class BcsMovementDetailType extends AbstractType
                 'attr' => ['class' => 'sel-product'],
                 "choice_value" => "id",
                 'choice_attr' => function(BcsItem $p_itItem){
-                    return ['data-stock-quantity' => $p_itItem->getItmStockQuantity(),
+                    return ['data-stock-quantity' => $p_itItem->getItmAvailableQuantity(),
                         'data-unit-measure' => $p_itItem->getItmUnitOfMeasure()->getId()];
                 },
                 'translation_domain'=>'translations',

@@ -47,7 +47,7 @@ class BcsOrderDetailType extends AbstractType
                 "choice_value" => "id",
                 'choice_attr' => function(BcsItem $p_itItem){
                     return [
-                        'data-stock-quantity' => $p_itItem->getItmStockQuantity()-$p_itItem->getItmReservedQuantity(),
+                        'data-stock-quantity' => $p_itItem->getItmAvailableQuantity(),
                         'data-unit-measure' => $p_itItem->getItmUnitOfMeasure()->getId(),
                         'data-price' => $p_itItem->getItmPriceWithDuty()
                     ];

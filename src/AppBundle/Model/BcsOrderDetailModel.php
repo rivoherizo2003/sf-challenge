@@ -36,18 +36,19 @@ class BcsOrderDetailModel
      * @return string
      */
     public function createOrderDetail(BcsOrder $p_ordOrder, $p_iIdItem, $p_fQuantityToOrder){
-        $l_iItItem = $this->g_omObjectManager->getRepository(BcsItem::class)->findOneBy(array('id' => $p_iIdItem));
+        $l_ItItem = $this->g_omObjectManager->getRepository(BcsItem::class)->findOneBy(array('id' => $p_iIdItem));
         $l_oddOrderDetail = $this->g_omObjectManager->getRepository(BcsOrderDetail::class)
             ->findOneBy(array('oddOrder' => $p_ordOrder->getId(), 'oddItem' => $p_iIdItem));
         if ( is_null($l_oddOrderDetail) ) {
             $l_ordOrderDetail = new BcsOrderDetail();
             $l_ordOrderDetail->setOddOrder($p_ordOrder);
-            $l_ordOrderDetail->setOddItem($l_iItItem);
-            $l_ordOrderDetail->setOddPrice($l_iItItem->getItmPriceWithDuty());
+            $l_ordOrderDetail->setOddItem($l_ItItem);
+            $l_ordOrderDetail->setOddPrice($l_ItItem->getItmPriceWithDuty());
             $l_ordOrderDetail->setOddQuantity($p_fQuantityToOrder);
-            $l_ordOrderDetail->setOddUnitOfMeasure($l_iItItem->getItmUnitOfMeasure());
+            $l_ordOrderDetail->setOddUnitOfMeasure($l_ItItem->getItmUnitOfMeasure());
+            $l_ItItem->setItmIsInActivity(true);
             //update amount order
-            $l_fAmount = $p_ordOrder->getOrdAmount() + ($l_iItItem->getItmPriceWithDuty() * $p_fQuantityToOrder);
+            $l_fAmount = $p_ordOrder->getOrdAmount() + ($l_ItItem->getItmPriceWithDuty() * $p_fQuantityToOrder);
             $p_ordOrder->setOrdAmount($l_fAmount);
             try{
                 $this->g_omObjectManager->persist($l_ordOrderDetail);
@@ -85,10 +86,14 @@ class BcsOrderDetailModel
         $l_arrOrderDetail = $this->getOrderDetailByOrderId($p_ordOrder->getId());
         if ( count($l_arrOrderDetail) > 0 ) {
             foreach ( $l_arrOrderDetail as $l_oddOrderDetail ) {
-                $l_oddOrderDetail->setOddStockQuantity($l_oddOrderDetail->getOddItem()->getItmStockQuantity());
+                $l_oddOrderDetail->setOddStockQuantity($l_oddOrderDetail->getOddItem()->getItmAvailableQuantity());
             }
         }
 
         return $p_ordOrder;
+    }
+
+    public function parseOrderDetail(BcsOrderDetail $p_oddOrderDetail){
+        return $p_oddOrderDetail;
     }
 }

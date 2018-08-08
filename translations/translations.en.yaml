@@ -46,7 +46,7 @@ form:
     customer_name: Customer's name
     in_progress: In progress
     achieved: Achieved
-    current_order: Order saved
+    current_order: Your order
     amount_order: Amount order
     quantity_to_order: Quantity to order
     order: Order
@@ -166,6 +166,8 @@ form:
     brand_list: Brand's list
     add_brand: Create a brand
     stock_quantity: Quantity stock
+    available_quantity: Available quantity
+    reserved_quantity: Reserved quantity
     date_movement: Movement's date
     type_movement: Movement's type
 

@@ -15,6 +15,10 @@
             MGA {{ l_itItem.itmPriceWithDuty|number_format(2, '.', ' ') }}
             <label class="col-form-label text-info"> {{ 'form.stock_quantity'|trans({}, 'translations') }}:</label>
             {{ l_itItem.itmStockQuantity }} {{ l_itItem.itmUnitOfMeasure.uomCode }}
+            <label class="col-form-label text-info"> {{ 'form.reserved_quantity'|trans({}, 'translations') }}:</label>
+            {{ l_itItem.itmReservedQuantity }} {{ l_itItem.itmUnitOfMeasure.uomCode }}
+            <label class="col-form-label text-info"> {{ 'form.available_quantity'|trans({}, 'translations') }}:</label>
+            {{ l_itItem.itmAvailableQuantity }} {{ l_itItem.itmUnitOfMeasure.uomCode }}
         </div>
         <div class="col-sm-3">
             <div class="col-sm">

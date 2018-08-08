@@ -26,7 +26,7 @@
                             <i class="material-icons md-orange md-18">create</i>
                         </a>
                     {% endif %}
-                    {% if l_mvtMovement.mvtIsDraft == true %}
+                    {% if l_mvtMovement.mvtIsDraft == true and l_mvtMovement.mvtOrder is null %}
                         <a class="btn btn-item-delete" data-target="#div-modal" data-toggle="modal"
                             data-heading-title="{{ 'general.confirmation'|trans({}, 'translations') }}"
                             data-body-content="{{ 'confirm.message_removal'|trans({'name':l_mvtMovement.mvtCode}, 'translations') }}"

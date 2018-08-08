@@ -38,6 +38,7 @@
                                                                     {% include 'orderDetail/orderDetailPrototype.html.twig' with {'p_frmForm': p_frmForm.ordOrderDetailLists.vars.prototype} %}
 																{% endfilter %}
 																	">
+            {% set i = 0 %}
             {% for l_oddOrderDetail in p_frmForm.ordOrderDetailLists %}
                 <div class="row border m-2">
                     <div class="col-sm">
@@ -45,8 +46,12 @@
                             {% include 'orderDetail/orderDetailPrototype.html.twig' with {'p_frmForm': l_oddOrderDetail} %}
                         </div>
                     </div>
-                    {#<a href="#" class="remove-tag text-red"><i class="material-icons md-18 md-red">delete</i></a>#}
+
+                    {% if i > 0 %}
+                        <a href="#" class="remove-tag text-red"><i class="material-icons md-18 md-red">delete</i></a>
+                    {% endif %}
                 </div>
+                {% set i = i + 1 %}
             {% endfor %}
         </div>
     </div>

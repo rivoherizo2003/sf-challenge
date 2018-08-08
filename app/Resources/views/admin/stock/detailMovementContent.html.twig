@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid pb-3">
     <div class="row">
         <div class="col-sm">
             <div class="form-group">
@@ -64,23 +64,41 @@
         </div>
     </div>
     {% if p_mvtMovement.mvtMovementDetailLists is not null %}
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="col-form-label w-100 text-info"> {{ 'form.item_identity'|trans({}, 'translations') }}</label>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="col-form-label w-100 text-info"> {{ 'form.description'|trans({}, 'translations') }}</label>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label class="col-form-label w-100 text-info"> {{ 'form.quantity'|trans({}, 'translations') }}</label>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                </div>
+            </div>
+        </div>
         {% for l_mvdMovementDetail in p_mvtMovement.mvtMovementDetailLists %}
-            <div class="row">
+            <div class="row border-bottom">
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="col-form-label w-100 text-info"> {{ 'form.item_identity'|trans({}, 'translations') }}:</label>
                         {{ l_mvdMovementDetail.mvdItem.itmTitle }}
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="col-form-label w-100 text-info"> {{ 'form.description'|trans({}, 'translations') }}:</label>
                         {{ l_mvdMovementDetail.mvdItem.itmDescription }}
                     </div>
                 </div>
                 <div class="col-sm-2">
                     <div class="form-group">
-                        <label class="col-form-label w-100 text-info"> {{ 'form.quantity'|trans({}, 'translations') }}:</label>
                         {{ l_mvdMovementDetail.mvdQuantity }} {% if l_mvdMovementDetail.mvdUnitOfMeasure is not null %}{{ l_mvdMovementDetail.mvdUnitOfMeasure.uomCode }}{% endif %}
                     </div>
                 </div>

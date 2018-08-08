@@ -58,7 +58,7 @@ class BcsMovementController extends Controller
         if ( $l_frmBcsMovementForm->isSubmitted() && $l_frmBcsMovementForm->isValid() ) {
             $l_mvmMovementModel = new BcsMovementModel($l_omObjectManager, $l_trTranslator);
             $l_mvtMovement = $l_frmBcsMovementForm->getData();
-            $l_mvtMovement = $l_mvmMovementModel->taskAfterSubmittingAddMovement('MVT', $l_mvtMovement);
+            $l_mvtMovement = $l_mvmMovementModel->taskAfterSubmittingAddMovement('ENT', $l_mvtMovement);
             try{
                 $l_omObjectManager->persist($l_mvtMovement);
                 $l_omObjectManager->flush();

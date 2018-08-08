@@ -32,14 +32,27 @@ class IsQuantityExitMovementCorrectValidator extends ConstraintValidator
 	 */
 	public function validate($entity, Constraint $constraint)
 	{
-		if ( $entity->getMvdItem()->getItmStockQuantity() < $entity->getMvdQuantity()
+		if ( $entity->getMvdItem()->getItmAvailableQuantity() < $entity->getMvdQuantity()
             && $entity->getMvdMovement()->getMvtMovementType()->getTpmCode() == 'TMV0608-000002' ) {
 			$this->context->buildViolation($constraint->message)
 				->atPath("mvdQuantity")
 				->addViolation();
 		}
-		//check duplicate item
-//        $l_iCountDuplicateItem = 0;
+		//create an array of id item from the movement detail
+        $l_acMovementDetail = $entity->getMvdMovement()->getMvtMovementDetailLists();
+		$l_arrIdItem = array();
+		if ( count($l_acMovementDetail) > 0 ) {
+            foreach ($l_acMovementDetail as $l_mvdMovementDetail) {
+                $l_arrIdItem[] = $l_mvdMovementDetail->getMvdItem()->getId();
+            }
+        }
 
+        //check item redundancy
+        $l_arrArrayCount = array_count_values($l_arrIdItem);
+		if ( $l_arrArrayCount[$entity->getMvdItem()->getId()] > 1 ) {
+            $this->context->buildViolation($constraint->message_)
+                ->atPath("mvdItem")
+                ->addViolation();
+        }
 	}
 }

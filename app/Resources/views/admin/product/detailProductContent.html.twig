@@ -60,10 +60,14 @@
         </div>
         <div class="col-sm">
             <div class="form-group">
+                <label class="col-form-label w-100 text-info">{{ 'form.reserved_quantity'|trans({}, 'translations') }}</label>
+                {{ p_itItem.itmReservedQuantity }} {{ p_itItem.itmUnitOfMeasure.uomDescription }}
             </div>
         </div>
         <div class="col-sm">
             <div class="form-group">
+                <label class="col-form-label w-100 text-info">{{ 'form.available_quantity'|trans({}, 'translations') }}</label>
+                {{ p_itItem.itmAvailableQuantity }} {{ p_itItem.itmUnitOfMeasure.uomDescription }}
             </div>
         </div>
         <div class="col-sm">

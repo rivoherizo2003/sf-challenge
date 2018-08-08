@@ -35,6 +35,9 @@ class BcsMovementModel
      * @return BcsMovement|string
      */
     public function taskAfterSubmittingAddMovement($p_sPrefix, BcsMovement $p_mvtMovement){
+        if ( $p_mvtMovement->getMvtMovementType()->getTpmCode() == 'TMV0608-000002' ) {
+            $p_sPrefix = "EXT";
+        }
         $l_bcsMovement = $this->generateCodeMovement($p_sPrefix, $p_mvtMovement);
         if ( !$p_mvtMovement->isMvtIsDraft() ) {
             //if the movement was validated then update stock quantity
@@ -125,5 +128,59 @@ class BcsMovementModel
         } catch (\Exception $e){
             return 'error-occurred';
         }
+    }
+
+    /**
+     * create a temporary movement for an order validated by the customer
+     * after that the admin can validate the exit movement stock related to this order
+     * @param BcsOrder $p_ordOrder
+     * @return BcsMovement|string
+     */
+    public function createMovementFromOrderValidated(BcsOrder $p_ordOrder){
+        $l_utUtility = new Utility();
+        $this->g_omObjectManager = $l_utUtility->resetEntityManager($this->g_omObjectManager);
+        $l_tdToday = new \DateTime();
+        $l_tmTypeMovementModel = new BcsTypeMovementModel($this->g_omObjectManager, $this->g_tiTranslator);
+        $l_mvtMovementTypeExit = $l_tmTypeMovementModel->getTypeExitMovement();
+        $l_mvtMovement = new BcsMovement();
+        $l_mvtMovement = $this->generateCodeMovement('EXT', $l_mvtMovement);
+        $l_mvtMovement->setMvtOrder($p_ordOrder);
+        $l_mvtMovement->setMvtDate($l_tdToday);
+        $l_mvtMovement->setMvtComment('Stock exit movement from order '.$p_ordOrder->getOrdCode());
+        $l_mvtMovement->setMvtMovementType($l_mvtMovementTypeExit);
+        try{
+            $this->g_omObjectManager->persist($l_mvtMovement);
+            $this->g_omObjectManager->flush();
+//            var_dump($l_mvtMovement);die;
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        $l_odmOrderDetailModel = new BcsOrderDetailModel($this->g_omObjectManager, $this->g_tiTranslator);
+        $l_arrOrderDetail = $l_odmOrderDetailModel->getOrderDetailByOrderId($p_ordOrder->getId());
+//        $this->g_omObjectManager = $l_utUtility->resetEntityManager($this->g_omObjectManager);
+        foreach ( $l_arrOrderDetail as $l_oddOrderDetail ) {
+            $l_oddOrderDetail = $l_odmOrderDetailModel->parseOrderDetail($l_oddOrderDetail);
+            $l_mvdMovementDetail = new BcsMovementDetail();
+            $l_mvdMovementDetail->setMvdMovement($l_mvtMovement);
+            $l_mvdMovementDetail->setMvdUnitOfMeasure($l_oddOrderDetail->getOddItem()->getItmUnitOfMeasure());
+            $l_mvdMovementDetail->setMvdQuantity($l_oddOrderDetail->getOddQuantity());
+            $l_mvdMovementDetail->setMvdItem($l_oddOrderDetail->getOddItem());
+            //update reserved quantity
+            $l_fReservedQuantity = $l_oddOrderDetail->getOddItem()->getItmReservedQuantity() + $l_oddOrderDetail->getOddQuantity();
+            $l_oddOrderDetail->getOddItem()->setItmReservedQuantity($l_fReservedQuantity);
+            //update available quantity
+            $l_oddOrderDetail->getOddItem()->setItmAvailableQuantity($l_oddOrderDetail->getOddItem()->getItmStockQuantity() - $l_fReservedQuantity);
+            //update activity item.. in order to avoid removal of the product
+            $l_oddOrderDetail->getOddItem()->setItmIsInActivity(true);
+            try{
+                $this->g_omObjectManager->persist($l_mvdMovementDetail);
+                $this->g_omObjectManager->flush();
+            } catch (\Exception $e) {
+                return $e->getMessage();
+            }
+            unset($l_oddOrderDetail);
+        }
+
+        return $l_mvtMovement;
     }
 }

@@ -23,7 +23,7 @@
         <div class="col-sm-3">
             <div class="col-sm">
                 <div class="float-right">
-                    {% if l_itItem.itmStockQuantity > 0 %}
+                    {% if l_itItem.itmAvailableQuantity > 0 %}
                         <a class="btn" href="{{ path('cus_show_product',{'p_iIdItem':l_itItem.id}) }}" title="{{ 'form.order'|trans({}, 'translations') }}">
                             <i class="material-icons md-blue md-18">add_shopping_cart</i> {{ 'form.order'|trans({}, 'translations') }}
                         </a>

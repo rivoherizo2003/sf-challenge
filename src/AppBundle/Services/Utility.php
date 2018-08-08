@@ -9,6 +9,9 @@
 namespace AppBundle\Services;
 
 
+use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManager;
+
 class Utility
 {
     /**
@@ -45,5 +48,22 @@ class Utility
         else {
             return trim($p_sPrefix.$l_sCode);
         }
+    }
+
+
+
+    /**
+     * reset entity manager , open closed connection
+     * @param $p_emEntityManager
+     *
+     * @return mixed
+     */
+    public function resetEntityManager($p_emEntityManager){
+        if ( !$p_emEntityManager->isOpen() )
+        {
+            $p_emEntityManager->resetManager();
+        }
+
+        return $p_emEntityManager;
     }
 }

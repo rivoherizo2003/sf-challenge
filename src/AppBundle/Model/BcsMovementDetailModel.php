@@ -39,7 +39,7 @@ class BcsMovementDetailModel
             ->findBy(array('mvdMovement' => $p_mvtMovement->getId()));
         if ( count($l_arrMovementDetail) > 0 ) {
             foreach ( $l_arrMovementDetail as $l_mvdMovementDetail ) {
-                $l_mvdMovementDetail->setMvdStockQuantity($l_mvdMovementDetail->getMvdItem()->getItmStockQuantity());
+                $l_mvdMovementDetail->setMvdStockQuantity($l_mvdMovementDetail->getMvdItem()->getItmAvailableQuantity());
             }
         }
 

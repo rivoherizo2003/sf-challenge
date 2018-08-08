@@ -16,6 +16,7 @@ use Symfony\Component\Validator\Constraint;
 class IsQuantityOrderDetailCorrect extends Constraint
 {
 	public $message = "Quantity stock not sufficient";
+    public $message_ = "Duplicate product";
 
 	public function validatedBy()
 	{
