@@ -1,0 +1,280 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+/**
+ * BcsUser
+ * @UniqueEntity(fields="usrMail", message="message.mail_already_exist")
+ * @ORM\Table(name="bcs_user")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\BcsUserRepository")
+ * @ORM\HasLifecycleCallbacks()
+ */
+class BcsUser
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usrCode", type="string", length=15, unique=true)
+     */
+    private $usrCode;
+
+    /**
+     * @ORM\Column(name="roles", type="json_array", nullable=false)
+     */
+    private $roles = [];
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usrLastName", type="string", length=255, nullable=false)
+     */
+    private $usrLastName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usrFirstName", type="string", length=255, nullable=false)
+     */
+    private $usrFirstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usrAddress", type="string", length=255, nullable=false)
+     */
+    private $usrAddress;
+
+    /**
+     * @var string
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid e-mail.",
+     *     checkMX = false)
+     *
+     * @ORM\Column(name="usrMail", type="string", length=150, unique=true, nullable=false)
+     */
+    private $usrMail;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="usrGender", type="integer", length=2, nullable=true, options={"comment":"male 1, female 0"})
+     */
+    private $usrGender;
+
+    /**
+     * @var boolean
+     * @ORM\Column(name="usrIsActive", type="boolean", options={"comment":"true if the user is active, false if not"})
+     */
+    private $usrIsActive = true;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usrPhone", type="string", length=30, nullable=false)
+     */
+    private $usrPhone;
+
+    /**
+     * @var string
+     * @Assert\Length(
+     *      min = 6,
+     *      minMessage = "message.minimum_character"
+     * )
+     *
+     * @ORM\Column(name="password", type="text", nullable=true)
+     */
+    private $password;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set usrCode
+     *
+     * @param string $usrCode
+     *
+     * @return BcsUser
+     */
+    public function setUsrCode($usrCode)
+    {
+        $this->usrCode = $usrCode;
+
+        return $this;
+    }
+
+    /**
+     * Get usrCode
+     *
+     * @return string
+     */
+    public function getUsrCode()
+    {
+        return $this->usrCode;
+    }
+
+    /**
+     * Set usrLastName
+     *
+     * @param string $usrLastName
+     *
+     * @return BcsUser
+     */
+    public function setUsrLastName($usrLastName)
+    {
+        $this->usrLastName = $usrLastName;
+
+        return $this;
+    }
+
+    /**
+     * Get usrLastName
+     *
+     * @return string
+     */
+    public function getUsrLastName()
+    {
+        return $this->usrLastName;
+    }
+
+    /**
+     * Set usrFirstName
+     *
+     * @param string $usrFirstName
+     *
+     * @return BcsUser
+     */
+    public function setUsrFirstName($usrFirstName)
+    {
+        $this->usrFirstName = $usrFirstName;
+
+        return $this;
+    }
+
+    /**
+     * Get usrFirstName
+     *
+     * @return string
+     */
+    public function getUsrFirstName()
+    {
+        return $this->usrFirstName;
+    }
+
+    /**
+     * Set usrAddress
+     *
+     * @param string $usrAddress
+     *
+     * @return BcsUser
+     */
+    public function setUsrAddress($usrAddress)
+    {
+        $this->usrAddress = $usrAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get usrAddress
+     *
+     * @return string
+     */
+    public function getUsrAddress()
+    {
+        return $this->usrAddress;
+    }
+
+    /**
+     * Set usrMail
+     *
+     * @param string $usrMail
+     *
+     * @return BcsUser
+     */
+    public function setUsrMail($usrMail)
+    {
+        $this->usrMail = $usrMail;
+
+        return $this;
+    }
+
+    /**
+     * Get usrMail
+     *
+     * @return string
+     */
+    public function getUsrMail()
+    {
+        return $this->usrMail;
+    }
+
+    /**
+     * Set usrPhone
+     *
+     * @param string $usrPhone
+     *
+     * @return BcsUser
+     */
+    public function setUsrPhone($usrPhone)
+    {
+        $this->usrPhone = $usrPhone;
+
+        return $this;
+    }
+
+    /**
+     * Get usrPhone
+     *
+     * @return string
+     */
+    public function getUsrPhone()
+    {
+        return $this->usrPhone;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     *
+     * @return BcsUser
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+}
+

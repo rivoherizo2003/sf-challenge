@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-sm">
+        <div class="form-group">
+            {{ form_label(p_frmForm.itmTitle,'form.title'|trans({}, 'translations') ) }}:
+            {{ form_widget(p_frmForm.itmTitle) }}
+            {#{{ form_errors(p_frmForm.itmTitle) }}#}
+        </div>
+    </div>
+    <div class="col-sm">
+        <div class="form-group">
+            {{ form_label(p_frmForm.itmDescription,'form.description'|trans({}, 'translations') ) }}:
+            {{ form_widget(p_frmForm.itmDescription) }}
+            {#{{ form_errors(p_frmForm.itmDescription) }}#}
+        </div>
+    </div>
+    <div class="col-sm">
+        <div class="form-group">
+            {{ form_label(p_frmForm.itmItemCategory,'form.category'|trans({}, 'translations') ) }}:
+            {{ form_widget(p_frmForm.itmItemCategory) }}
+            {#{{ form_errors(p_frmForm.itmItemCategory) }}#}
+        </div>
+    </div>
+    <div class="col-sm">
+        <div class="form-group">
+            {{ form_label(p_frmForm.itmItemType,'form.item_type'|trans({}, 'translations') ) }}:
+            {{ form_widget(p_frmForm.itmItemType) }}
+            {#{{ form_errors(p_frmForm.itmItemType) }}#}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm">
+        <div class="form-group">
+            {{ form_label(p_frmForm.itmItemCodeSupplier,'form.code_item_supplier'|trans({}, 'translations') ) }}:
+            {{ form_widget(p_frmForm.itmItemCodeSupplier) }}
+            {#{{ form_errors(p_frmForm.itmItemCodeSupplier) }}#}
+        </div>
+    </div>
+    <div class="col-sm">
+        <div class="form-group">
+            {{ form_label(p_frmForm.itmItemBrand,'form.brand'|trans({}, 'translations') ) }}:
+            {{ form_widget(p_frmForm.itmItemBrand) }}
+            {#{{ form_errors(p_frmForm.itmItemBrand) }}#}
+        </div>
+    </div>
+    <div class="col-sm">
+        <div class="form-group">
+            {{ form_label(p_frmForm.itmUnitOfMeasure,'form.unit_of_measure'|trans({}, 'translations') ) }}:
+            {{ form_widget(p_frmForm.itmUnitOfMeasure) }}
+            {#{{ form_errors(p_frmForm.itmUnitOfMeasure) }}#}
+        </div>
+    </div>
+    <div class="col-sm">
+        <div class="form-group">
+            {{ form_label(p_frmForm.itmPriceWithDuty,'form.price_ttc'|trans({}, 'translations') ) }}:
+            {{ form_widget(p_frmForm.itmPriceWithDuty) }}
+            {#{{ form_errors(p_frmForm.itmPriceWithDuty) }}#}
+        </div>
+    </div>
+</div>

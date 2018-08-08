@@ -1,0 +1,39 @@
+{% for l_itItem in p_arrItem %}
+    <div class="row border-bottom">
+        <div class="col-sm-2">
+            <label class="col-form-label text-info"> {{ 'form.code'|trans({}, 'translations') }}:</label>
+            {{ l_itItem.itmCode }}
+        </div>
+        <div class="col-sm-3">
+            <label class="col-form-label text-info"> {{ 'form.title'|trans({}, 'translations') }}:</label>
+            {{ l_itItem.itmTitle }}
+            <label class="col-form-label text-info"> {{ 'form.description'|trans({}, 'translations') }}:</label>
+            {{ l_itItem.itmDescription }}
+        </div>
+        <div class="col-sm-4">
+            <label class="col-form-label text-info"> {{ 'form.price_ttc'|trans({}, 'translations') }}:</label>
+            MGA {{ l_itItem.itmPriceWithDuty|number_format(2, '.', ' ') }}
+            <label class="col-form-label text-info"> {{ 'form.stock_quantity'|trans({}, 'translations') }}:</label>
+            {{ l_itItem.itmStockQuantity }} {{ l_itItem.itmUnitOfMeasure.uomCode }}
+        </div>
+        <div class="col-sm-3">
+            <div class="col-sm">
+                <div class="float-right">
+                    <a class="btn" href="{{ path('adm_edit_product',{'p_iIdItem':l_itItem.id}) }}" title="{{ 'general.edit_product'|trans({}, 'translations') }}">
+                        <i class="material-icons md-orange md-18">create</i>
+                    </a>
+                    <a class="btn btn-item-delete" data-target="#div-modal" data-toggle="modal"
+                        data-heading-title="{{ 'general.confirmation'|trans({}, 'translations') }}"
+                        data-body-content="{{ 'confirm.message_removal'|trans({'name':l_itItem.itmTitle}, 'translations') }}"
+                        data-url="{{ path('adm_delete_product',{'p_iIdItem':l_itItem.id} ) }}"
+                    >
+                        <i class="material-icons md-red md-18">delete</i>
+                    </a>
+                    <a class="btn" href="{{ path('bcs_show_product',{'p_iIdItem':l_itItem.id}) }}" title="{{ 'general.product_detail'|trans({}, 'translations') }}">
+                        <i class="material-icons md-blue md-18">description</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}

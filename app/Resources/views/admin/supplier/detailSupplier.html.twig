@@ -1,0 +1,46 @@
+{% extends 'admin/homeAdmin.html.twig' %}
+{% block title %}{{ 'general.manage_supplier'|trans({}, 'translations') }}{% endblock %}
+{% block additionalStyle %}
+    {#<link href="{{ asset('build/css/signIn.css') }}" rel="stylesheet">#}
+{% endblock %}
+{% block activeProduct %}active{% endblock %}
+
+{% block maincontent %}
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-sm">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('bcs_list_supplier') }}">
+                                <i class="material-icons md-18">list</i> {{ 'general.list_supplier'|trans({}, 'translations') }}
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <i class="material-icons md-18">description</i> {{ 'general.detail_supplier'|trans({}, 'translations') }} >
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-sm">
+                <a class="btn btn-sm btn-outline-secondary float-right"
+                   href="{{ path('bcs_edit_supplier',{'p_iIdSupplier':p_supSupplier.id}) }}"><i class="material-icons md-18">edit</i> {{ 'form.edit'|trans({}, 'translations') }}
+                </a>
+            </div>
+        </div>
+        {% if p_sRouteFrom is defined and p_sRouteFrom is not null %}
+            <div class="row">
+                <div class="col-sm">
+                    <div  class="alert alert-success" role="alert">
+                        {{ p_sRouteFrom|getMessage }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-sm">
+                {% include 'admin/supplier/detailSupplierContent.html.twig' %}
+            </div>
+        </div>
+    </main>
+{% endblock %}

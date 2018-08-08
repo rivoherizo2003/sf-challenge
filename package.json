@@ -1,0 +1,37 @@
+{
+  "name": "sf-challenge",
+  "version": "1.0.0",
+  "description": "bocasay symfony challenge",
+  "main": "webpack.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "ajv": "^6.4.0",
+    "bootstrap": "^4.1.1",
+    "bootstrap-datepicker": "^1.8.0",
+    "bootstrap-multiselect": "^0.9.13",
+    "datatables.net-dt": "^1.10.16",
+    "jquery": "^3.3.1",
+    "node-notifier": "^5.2.1",
+    "popper.js": "^1.14.3",
+    "select2": "^4.0.6-rc.1",
+    "select2-bootstrap-css": "^1.4.6",
+    "shellwords": "^0.1.1",
+    "webpack-notifier": "^1.6.0"
+  },
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.17.0",
+    "exports-loader": "^0.7.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^6.0.7"
+  },
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production"
+  },
+  "author": "",
+  "license": "ISC"
+}

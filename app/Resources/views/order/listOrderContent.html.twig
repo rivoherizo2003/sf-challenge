@@ -1,0 +1,46 @@
+{% for l_ordOrder in p_arrOrderPaginated %}
+    <div class="row border-bottom">
+        <div class="col-sm-2">
+            <label class="col-form-label text-info"> {{ 'form.code'|trans({}, 'translations') }}:</label>
+            <a href="#" data-url="{{ path('cus_order_detail') }}"
+               data-target="#div-modal-detail" data-toggle="modal"
+               data-heading-title="{{ 'general.detail_order'|trans({}, 'translations') }}"
+               data-order-code="{{ l_ordOrder.ordCode }}" data-order-id="{{ l_ordOrder.id }}" class="hrf-order-code"> {{ l_ordOrder.ordCode }} </a>
+        </div>
+        <div class="col-sm-6">
+            <label class="col-form-label text-info"> {{ 'form.date_create'|trans({}, 'translations') }}:</label>
+            {{ l_ordOrder.ordDate|date('Y-m-d') }}
+            <label class="col-form-label text-info"> {{ 'form.amount_order'|trans({}, 'translations') }}:</label>
+            MGA {{ l_ordOrder.ordAmount|number_format(2, '.', ' ') }}
+            <label class="col-form-label text-info"> {{ 'form.customer_name'|trans({}, 'translations') }}:</label>
+            {{ l_ordOrder.ordUser.usrLastName~" "~l_ordOrder.ordUser.usrLastName }}
+            <label class="col-form-label text-info"> {{ 'form.email'|trans({}, 'translations') }}:</label>
+            {{ l_ordOrder.ordUser.usrMail }}
+        </div>
+        <div class="col-sm-2">
+            <label class="col-form-label text-info"> {{ 'form.status'|trans({}, 'translations') }}:</label>
+            {{ l_ordOrder|getStatusOrder }}
+        </div>
+        <div class="col-sm-2">
+            <div class="col-sm">
+                <div class="float-right">
+                    {% if l_ordOrder.ordStatus == 0 %}
+                        <a class="btn" href="{{ path('bcs_edit_order_customer',{'p_iIdOrder':l_ordOrder.id}) }}" title="{{ 'general.edit_product'|trans({}, 'translations') }}">
+                            <i class="material-icons md-orange md-18">create</i>
+                        </a>
+                        <a class="btn btn-item-delete" data-target="#div-modal" data-toggle="modal"
+                           data-heading-title="{{ 'general.confirmation'|trans({}, 'translations') }}"
+                           data-body-content="{{ 'confirm.message_removal'|trans({'name':l_ordOrder.ordCode}, 'translations') }}"
+                           data-url="{{ path('bcs_delete_order',{'p_iIdOrder':l_ordOrder.id} ) }}"
+                        >
+                            <i class="material-icons md-red md-18">delete</i>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% if p_arrOrderPaginated|length == 0 %}
+    <h3>No Order</h3>
+{% endif %}

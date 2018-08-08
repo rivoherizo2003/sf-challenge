@@ -1,0 +1,45 @@
+{% extends 'customer/indexCustomer.html.twig' %}
+{% block title %}{{ 'general.customer'|trans({}, 'translations') }}{% endblock %}
+{% block additionalStyle %}
+    {#<link href="{{ asset('build/css/signIn.css') }}" rel="stylesheet">#}
+{% endblock %}
+{% block activeProduct %}active{% endblock %}
+
+{% block maincontent %}
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-sm">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <i class="material-icons md-18">list</i> {{ 'general.product_list'|trans({}, 'translations') }} >
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-sm">
+
+            </div>
+        </div>
+        {% if p_sRouteFrom is defined and p_sRouteFrom is not null %}
+            <div class="row">
+                <div class="col-sm">
+                    <div  class="alert alert-success" role="alert">
+                        {{ p_sRouteFrom|getMessage }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {#product list#}
+        {% include 'product/listProductContent.html.twig' %}
+        <div class="row pb-3 pt-3">
+            <div class="col-sm"></div>
+            <div class="col-sm">
+                <div class="navigation">
+                    {{ knp_pagination_render(p_arrItem) }}
+                </div>
+            </div>
+            <div class="col-sm"></div>
+        </div>
+    </main>
+{% endblock %}

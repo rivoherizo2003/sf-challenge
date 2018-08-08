@@ -1,0 +1,114 @@
+<div class="container-fluid pb-3">
+    <div class="row">
+        <div class="col-sm">
+            <div class="form-group">
+                <label class="col-form-label w-100 text-info"> {{ 'form.code'|trans({}, 'translations') }}:</label>
+                {{ p_itItem.itmCode }}
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+                <label class="col-form-label w-100 text-info"> {{ 'form.title'|trans({}, 'translations') }}:</label>
+                {{ p_itItem.itmTitle }}
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group" >
+                <label class="col-form-label w-100 text-info"> {{ 'form.description'|trans({}, 'translations') }}:</label>
+                {{ p_itItem.itmDescription }}
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+                <label class="col-form-label w-100 text-info"> {{ 'form.category'|trans({}, 'translations') }}:</label>
+                {{ p_itItem.itmItemCategory.itcDescription }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="form-group">
+                <label class="col-form-label w-100 text-info">{{ 'form.item_type'|trans({}, 'translations') }}</label>
+                {{ p_itItem.itmItemType.ittDescription }}
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+                <label class="col-form-label w-100 text-info">{{ 'form.brand'|trans({}, 'translations') }}</label>
+                {{ p_itItem.itmItemBrand.brdName }} / {{ 'general.supplier'|trans({}, 'translations') }}: {{ p_itItem.itmItemBrand.brdSupplier.splName }}
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+                <label class="col-form-label w-100 text-info">{{ 'form.unit_of_measure'|trans({}, 'translations') }}</label>
+                {{ p_itItem.itmUnitOfMeasure.uomDescription }}
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+                <label class="col-form-label w-100 text-info"> {{ 'form.price_ttc'|trans({}, 'translations') }}:</label>
+                MGA {{ p_itItem.itmPriceWithDuty|number_format(2, '.', ' ') }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="form-group">
+                <label class="col-form-label w-100 text-info">{{ 'form.stock_quantity'|trans({}, 'translations') }}</label>
+                {{ p_itItem.itmStockQuantity }} {{ p_itItem.itmUnitOfMeasure.uomDescription }}
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <span class="text-success h5"><i class="material-icons md-24">rv_hookup</i> {{ 'general.stock_movement'|trans({}, 'translations') }}</span>
+        </div>
+        <div class="col-sm">
+        </div>
+    </div>
+    {% for l_mvdMovementDetail in p_arrMovementDetailPaginated %}
+        {% if l_mvdMovementDetail.mvdMovement.mvtIsDraft == false %}
+            <div class="row border-bottom">
+                <div class="col-sm-2">
+                    <label class="col-form-label text-info"> {{ 'form.code'|trans({}, 'translations') }}:</label>
+                    {{ l_mvdMovementDetail.mvdMovement.mvtCode }}
+                </div>
+                <div class="col-sm-3">
+                    <label class="col-form-label text-info"> {{ 'form.date_movement'|trans({}, 'translations') }}:</label>
+                    {{ l_mvdMovementDetail.mvdMovement.mvtDate|date('Y-m-d') }}
+                </div>
+                <div class="col-sm-3">
+                    <label class="col-form-label text-info"> {{ 'form.type_movement'|trans({}, 'translations') }}:</label>
+                    {{ l_mvdMovementDetail.mvdMovement.mvtMovementType.tpmDescription }}
+                </div>
+                <div class="col-sm-2">
+                    {% if l_mvdMovementDetail.mvdMovement.mvtMovementType.tpmCode == 'TMV0608-000001' %}
+                        <label class="col-form-label text-info"> {{ 'form.quantity'|trans({}, 'translations') }}:</label>
+                        {{ l_mvdMovementDetail.mvdQuantity }} {{ l_mvdMovementDetail.mvdItem.itmUnitOfMeasure.uomDescription }}
+                    {% endif %}
+                </div>
+                <div class="col-sm-2">
+                    {% if l_mvdMovementDetail.mvdMovement.mvtMovementType.tpmCode == 'TMV0608-000002' %}
+                        <label class="col-form-label text-info"> {{ 'form.quantity'|trans({}, 'translations') }}:</label>
+                        {{ l_mvdMovementDetail.mvdQuantity }} {{ l_mvdMovementDetail.mvdItem.itmUnitOfMeasure.uomDescription }}
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+
+

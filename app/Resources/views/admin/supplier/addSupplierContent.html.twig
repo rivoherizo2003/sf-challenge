@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-sm">
+        <div class="form-group">
+            {{ form_label(p_frmForm.splName,'form.title'|trans({}, 'translations') ) }}:
+            {{ form_widget(p_frmForm.splName) }}
+        </div>
+    </div>
+    <div class="col-sm">
+        <div class="form-group">
+            {{ form_label(p_frmForm.splAddress,'form.address'|trans({}, 'translations') ) }}:
+            {{ form_widget(p_frmForm.splAddress) }}
+        </div>
+    </div>
+    <div class="col-sm">
+        <div class="form-group">
+            {{ form_label(p_frmForm.splPhone,'form.phone'|trans({}, 'translations') ) }}:
+            {{ form_widget(p_frmForm.splPhone) }}
+        </div>
+    </div>
+    <div class="col-sm">
+        <div class="form-group">
+            {{ form_label(p_frmForm.splMail,'form.email'|trans({}, 'translations') ) }}:
+            {{ form_widget(p_frmForm.splMail) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm">
+        <span class="text-success h5"><i class="material-icons md-24">select_all</i> {{ 'form.brand'|trans({}, 'translations') }}</span>
+    </div>
+    <div class="col-sm">
+        <a href="#" class="add_brand_row" onclick="">
+            <i class="material-icons md-18">create</i> {{ 'form.add_brand'|trans({}, 'translations') }}
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm">
+        <div class="container-fluid supBrandList" data-prototype="
+                                                                {% filter escape %}
+                                                                    {% include 'admin/brand/brandPrototype.html.twig' with {'p_frmForm': p_frmForm.splBrandLists.vars.prototype} %}
+																{% endfilter %}
+																	">
+            {% for brdBrand in p_frmForm.splBrandLists %}
+                <div class="row border m-2">
+                    <div class="col-sm">
+                        <div class="container-fluid">
+                            {% include 'admin/brand/brandPrototype.html.twig' with {'p_frmForm': brdBrand} %}
+                        </div>
+                    </div>
+                    <a href="#" class="remove-tag text-red"><i class="material-icons md-18 md-red">delete</i></a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

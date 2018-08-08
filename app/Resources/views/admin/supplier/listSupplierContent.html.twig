@@ -1,0 +1,39 @@
+{% for l_supSupplier in p_arrSupplier %}
+    <div class="row border-bottom">
+        <div class="col-sm-2">
+            <label class="col-form-label text-info"> {{ 'form.code'|trans({}, 'translations') }}:</label>
+            {{ l_supSupplier.splCode }}
+        </div>
+        <div class="col-sm-3">
+            <label class="col-form-label text-info"> {{ 'form.title'|trans({}, 'translations') }}:</label>
+            {{ l_supSupplier.splName }}
+            <label class="col-form-label text-info"> {{ 'form.address'|trans({}, 'translations') }}:</label>
+            {{ l_supSupplier.splAddress }}
+        </div>
+        <div class="col-sm-4">
+            <label class="col-form-label text-info"> {{ 'form.phone'|trans({}, 'translations') }}:</label>
+            {{ l_supSupplier.splPhone }}
+            <label class="col-form-label text-info"> {{ 'form.email'|trans({}, 'translations') }}:</label>
+            {{ l_supSupplier.splMail }}
+        </div>
+        <div class="col-sm-3">
+            <div class="col-sm">
+                <div class="float-right">
+                    <a class="btn" href="{{ path('bcs_edit_supplier',{'p_iIdSupplier':l_supSupplier.id}) }}" title="{{ 'general.edit_supplier'|trans({}, 'translations') }}">
+                        <i class="material-icons md-orange md-18">create</i>
+                    </a>
+                    <a class="btn btn-item-delete" data-target="#div-modal" data-toggle="modal"
+                        data-heading-title="{{ 'general.confirmation'|trans({}, 'translations') }}"
+                        data-body-content="{{ 'confirm.message_removal'|trans({'name':l_supSupplier.splName}, 'translations') }}"
+                        data-url="{{ path('bcs_delete_supplier',{'p_iIdSupplier':l_supSupplier.id} ) }}"
+                    >
+                        <i class="material-icons md-red md-18">delete</i>
+                    </a>
+                    <a class="btn" href="{{ path('bcs_show_supplier',{'p_iIdSupplier':l_supSupplier.id}) }}" title="{{ 'general.detail_supplier'|trans({}, 'translations') }}">
+                        <i class="material-icons md-blue md-18">description</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}

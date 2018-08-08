@@ -1,0 +1,52 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+    encoders:
+        AppBundle\Entity\BcsUser:
+            algorithm: sha512
+            iterations: 9730
+            encode_as_base64: false
+
+    role_hierarchy:
+        ROLE_CUSTOMER: ROLE_CUSTOMER
+        ROLE_ADMIN: ROLE_ADMIN
+
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+
+    providers:
+        database_user:
+            entity: { class: AppBundle:BcsUser, property: usrMail }
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        public_area:
+            pattern:  ^/sf-challenge
+            anonymous: true
+        main_login:
+            pattern:   ^/secured/login$
+            anonymous: true
+        secured_area:
+            pattern:   ^/secured
+            anonymous: false
+            http_basic: ~
+            form_login:
+                provider:   database_user
+                login_path: /secured/login
+                check_path: /secured/login_check
+                success_handler: AppBundle\Services\SuccessHandler
+                remember_me: true
+            logout:
+                path:       logout
+                success_handler: AppBundle\Services\SuccessHandler
+
+        main:
+            anonymous: ~
+
+    access_control:
+#        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/sf-challenge, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/secured/login_check, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/secured/logout, role: IS_AUTHENTICATED_ANONYMOUSLY }

@@ -1,0 +1,97 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm">
+            <div class="form-group">
+                <label class="col-form-label w-100 text-info"> {{ 'form.code'|trans({}, 'translations') }}:</label>
+                {{ p_mvtMovement.mvtCode }}
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+                <label class="col-form-label w-100 text-info"> {{ 'form.date_movement'|trans({}, 'translations') }}:</label>
+                {{ p_mvtMovement.mvtDate|date('Y-m-d') }}
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group" >
+                <label class="col-form-label w-100 text-info"> {{ 'form.type_movement'|trans({}, 'translations') }}:</label>
+                {{ p_mvtMovement.mvtMovementType.tpmDescription }}
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+                <label class="col-form-label w-100 text-info"> {{ 'form.status'|trans({}, 'translations') }}:</label>
+                {% if p_mvtMovement.mvtIsDraft %}
+                    {{ 'form.draft'|trans({}, 'translations') }}
+                {% else %}
+                    {{ 'form.validated'|trans({}, 'translations') }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="form-group">
+                <label class="col-form-label w-100 text-info">{{ 'form.comment'|trans({}, 'translations') }}</label>
+                {{ p_mvtMovement.mvtComment }}
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+                <label class="col-form-label w-100 text-info"> {{ 'form.date_create'|trans({}, 'translations') }}:</label>
+                {{ p_mvtMovement.mvtAddedDate|date('Y-m-d') }}
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+                <label class="col-form-label w-100 text-info"> {{ 'general.order_validated'|trans({}, 'translations') }}:</label>
+                {% if p_mvtMovement.mvtOrder is not null %}
+                    {{ p_mvtMovement.mvtOrder.ordCode }}
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <span class="text-success h5"><i class="material-icons md-24">device_hub</i> {{ 'general.movement_detail'|trans({}, 'translations') }}</span>
+        </div>
+        <div class="col-sm">
+
+        </div>
+    </div>
+    {% if p_mvtMovement.mvtMovementDetailLists is not null %}
+        {% for l_mvdMovementDetail in p_mvtMovement.mvtMovementDetailLists %}
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="col-form-label w-100 text-info"> {{ 'form.item_identity'|trans({}, 'translations') }}:</label>
+                        {{ l_mvdMovementDetail.mvdItem.itmTitle }}
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="col-form-label w-100 text-info"> {{ 'form.description'|trans({}, 'translations') }}:</label>
+                        {{ l_mvdMovementDetail.mvdItem.itmDescription }}
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label class="col-form-label w-100 text-info"> {{ 'form.quantity'|trans({}, 'translations') }}:</label>
+                        {{ l_mvdMovementDetail.mvdQuantity }} {% if l_mvdMovementDetail.mvdUnitOfMeasure is not null %}{{ l_mvdMovementDetail.mvdUnitOfMeasure.uomCode }}{% endif %}
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+
+

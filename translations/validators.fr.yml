@@ -1,0 +1,6 @@
+message:
+    mail_already_exist: Cette e-mail existe déja
+    password_not_match: Les champs de mot de passe doivent correspondre
+    mandatory_field: Veuillez remplir ce champ
+    number_field: Veuillez saisir un nombre
+    minimum_character: Veuillez saisir plus de 6 caractères

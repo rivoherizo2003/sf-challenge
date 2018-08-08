@@ -1,0 +1,205 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * BcsItem
+ *
+ * @ORM\Table(name="bcs_item")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\BcsItemRepository")
+ */
+class BcsItem
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="itmCode", type="string", length=30, unique=true)
+     */
+    private $itmCode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="itmTitle", type="string", length=255)
+     */
+    private $itmTitle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="itmDescription", type="string", length=255, nullable=true)
+     */
+    private $itmDescription;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="itmStockQuantity", type="float", nullable=true)
+     */
+    private $itmStockQuantity = 0;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="itmPriceWithDuty", type="float", nullable=true)
+     */
+    private $itmPriceWithDuty = 0;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\BcsUnitOfMeasure", cascade={"persist"})
+     */
+    protected $itmUnitOfMeasure;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\BcsItemType", cascade={"persist"})
+     */
+    protected $itmItemType;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\BcsItemCategory", cascade={"persist"})
+     */
+    protected $itmItemCategory;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set itmCode
+     *
+     * @param string $itmCode
+     *
+     * @return BcsItem
+     */
+    public function setItmCode($itmCode)
+    {
+        $this->itmCode = $itmCode;
+
+        return $this;
+    }
+
+    /**
+     * Get itmCode
+     *
+     * @return string
+     */
+    public function getItmCode()
+    {
+        return $this->itmCode;
+    }
+
+    /**
+     * Set itmTitle
+     *
+     * @param string $itmTitle
+     *
+     * @return BcsItem
+     */
+    public function setItmTitle($itmTitle)
+    {
+        $this->itmTitle = $itmTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get itmTitle
+     *
+     * @return string
+     */
+    public function getItmTitle()
+    {
+        return $this->itmTitle;
+    }
+
+    /**
+     * Set itmDescription
+     *
+     * @param string $itmDescription
+     *
+     * @return BcsItem
+     */
+    public function setItmDescription($itmDescription)
+    {
+        $this->itmDescription = $itmDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get itmDescription
+     *
+     * @return string
+     */
+    public function getItmDescription()
+    {
+        return $this->itmDescription;
+    }
+
+    /**
+     * Set itmStockQuantity
+     *
+     * @param float $itmStockQuantity
+     *
+     * @return BcsItem
+     */
+    public function setItmStockQuantity($itmStockQuantity)
+    {
+        $this->itmStockQuantity = $itmStockQuantity;
+
+        return $this;
+    }
+
+    /**
+     * Get itmStockQuantity
+     *
+     * @return float
+     */
+    public function getItmStockQuantity()
+    {
+        return $this->itmStockQuantity;
+    }
+
+    /**
+     * Set itmPriceWithDuty
+     *
+     * @param float $itmPriceWithDuty
+     *
+     * @return BcsItem
+     */
+    public function setItmPriceWithDuty($itmPriceWithDuty)
+    {
+        $this->itmPriceWithDuty = $itmPriceWithDuty;
+
+        return $this;
+    }
+
+    /**
+     * Get itmPriceWithDuty
+     *
+     * @return float
+     */
+    public function getItmPriceWithDuty()
+    {
+        return $this->itmPriceWithDuty;
+    }
+}
+

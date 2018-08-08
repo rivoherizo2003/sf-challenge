@@ -1,0 +1,55 @@
+{% extends 'admin/homeAdmin.html.twig' %}
+{% block title %}{{ 'general.add_supplier'|trans({}, 'translations') }}{% endblock %}
+{% block additionalStyle %}
+    {#<link href="{{ asset('build/css/signIn.css') }}" rel="stylesheet">#}
+{% endblock %}
+{% block activeProduct %}active{% endblock %}
+{% form_theme p_frmForm 'bootstrap_4_layout.html.twig' %}
+{% block maincontent %}
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-sm">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('bcs_list_supplier') }}">
+                                <i class="material-icons md-18">list</i> {{ 'general.list_supplier'|trans({}, 'translations') }}
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <i class="material-icons md-18">edit</i> {{ 'general.add_supplier'|trans({}, 'translations') }} >
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-sm">
+                <a class="btn btn-sm btn-outline-secondary float-right"
+                   href="{{ path('bcs_list_supplier') }}"><i class="material-icons md-13">skip_previous</i> {{ 'form.back'|trans({}, 'translations') }}
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <div class="container-fluid pb-2">
+                    {{ form_start(p_frmForm) }}
+                        {% include 'admin/supplier/addSupplierContent.html.twig' %}
+                        <div class="row">
+                            <div class="col-sm text-center">
+                                <button type="submit" class="btn btn-sm btn-outline-success">{{ 'form.add'|trans({}, 'translations') }}</button>
+                            </div>
+                            <div class="col-sm text-center">
+                                <a href="{{ path('bcs_list_supplier') }}" class="btn btn-sm btn-outline-warning"> {{ 'form.cancel'|trans({}, 'translations') }}</a>
+                            </div>
+                        </div>
+                        {{ form_row(p_frmForm._token) }}
+                        {{ form_rest(p_frmForm) }}
+                    {{ form_end(p_frmForm, {'render_rest':false}) }}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('build/js/supplier/addSupplier.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,31 @@
+{#{% block _usrAddressList_entry_widget %}#}
+<div class="row">
+	<div class="col-sm-4">
+		<div class="form-group">
+			{{ form_label(p_frmForm.mvdItem,'form.item_identity'|trans({}, 'translations') ) }}:
+			{{ form_widget(p_frmForm.mvdItem) }}
+		</div>
+	</div>
+	<div class="col-sm-3">
+		<div class="form-group">
+			{#<label for="stock_quantity">{{ 'form.stock_quantity'|trans({}, 'translations') }}: </label>#}
+			{#<span id="sp-stock-quantity"></span>#}
+            {{ form_label(p_frmForm.mvdStockQuantity,'form.stock_quantity'|trans({}, 'translations') ) }} :
+            {{ form_widget(p_frmForm.mvdStockQuantity) }}
+		</div>
+	</div>
+	<div class="col-sm-3">
+		<div class="form-group">
+            {{ form_label(p_frmForm.mvdQuantity,'form.quantity'|trans({}, 'translations') ) }}:
+            {{ form_widget(p_frmForm.mvdQuantity) }}
+		</div>
+	</div>
+	<div class="col-sm-2">
+		<div class="form-group">
+            {{ form_label(p_frmForm.mvdUnitOfMeasure,'form.unit_of_measure'|trans({}, 'translations') ) }}:
+            {{ form_widget(p_frmForm.mvdUnitOfMeasure) }}
+			{#<label for="unit-of-measure" class="w-100">{{ 'form.unit_of_measure'|trans({}, 'translations') }}:</label>#}
+			{#<span class="sp-unit-of-measure"></span>#}
+		</div>
+	</div>
+</div>

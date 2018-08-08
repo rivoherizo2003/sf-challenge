@@ -1,0 +1,46 @@
+{% extends 'admin/homeAdmin.html.twig' %}
+{% block title %}{{ 'general.manage_product'|trans({}, 'translations') }}{% endblock %}
+{% block additionalStyle %}
+    {#<link href="{{ asset('build/css/signIn.css') }}" rel="stylesheet">#}
+{% endblock %}
+{% block activeProduct %}active{% endblock %}
+
+{% block maincontent %}
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-sm">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('adm_product') }}">
+                                <i class="material-icons md-18">list</i> {{ 'general.product_list'|trans({}, 'translations') }}
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <i class="material-icons md-18">description</i> {{ 'general.product_detail'|trans({}, 'translations') }} >
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-sm">
+                <a class="btn btn-sm btn-outline-secondary float-right"
+                   href="{{ path('adm_edit_product',{'p_iIdItem':p_itItem.id}) }}"><i class="material-icons md-18">edit</i> {{ 'form.edit'|trans({}, 'translations') }}
+                </a>
+            </div>
+        </div>
+        {% if p_sRouteFrom is defined and p_sRouteFrom is not null %}
+            <div class="row">
+                <div class="col-sm">
+                    <div  class="alert alert-success" role="alert">
+                        {{ p_sRouteFrom|getMessage }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-sm">
+                {% include 'admin/product/detailProductContent.html.twig' %}
+            </div>
+        </div>
+    </main>
+{% endblock %}

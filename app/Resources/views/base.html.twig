@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link href="{{ asset('build/css/app.css') }}" rel="stylesheet">
+        {% block additionalStyle %}
+        {% endblock %}
+    </head>
+    <body  class="{% block bodyClass %}{% endblock %}">
+        {% block body %}
+            <div class="container-fluid">
+
+            </div>
+        {% endblock %}
+        {% include 'confirmContent.html.twig' %}
+        {% include 'modalDetailContent.html.twig' %}
+        <footer class="blog-footer">
+            <p>©2018 All Rights Reserved to Zo. Privacy and Terms</p>
+            <p>
+                <a href="#">Back to top</a>
+            </p>
+        </footer>
+        <script src="{{ asset('build/js/app.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

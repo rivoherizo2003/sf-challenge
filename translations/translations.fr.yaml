@@ -1,0 +1,210 @@
+#general
+general:
+    detail_order: Détails de la commande
+    our_product: Nos produit(s)
+    create_my_account: Créer mon compte
+    customer_role: Client
+    available: Disponible
+    not_available: Non disponible
+    my_order: Mes commandes
+    customer_subscribe: Inscription client
+    administration: Administration
+    welcome_user: Bienvenu name!
+    home: Acceuil
+    product_list: Liste des produits
+    product: Produits
+    supplier: Fournisseurs
+    Stock: Stock
+    confirmation: Confirmation
+    manage_product: Gestion des produits
+    customer: Client(s)
+    manage_supplier: Gestion des fournisseurs
+    manage_stock: Gestion de stock
+    add_product: Ajouter un produit
+    edit_product: Modifier le produit
+    authentication: Authentification
+    lost_your_password: Mot de passe oublié
+    product_detail: Detail d'un produit
+    list_supplier: Liste des fournisseurs
+    add_supplier: Ajouter un fournisseurs
+    detail_supplier: Détail d'un fournisseur
+    supplier_brand_list: Liste des marques du fournisseur
+    edit_supplier: Modifier un fournisseur
+    list_movement_stock: Liste des mouvements de stock
+    add_movement_stock: Ajouter movement de stock
+    edit_movement_stock: Modifier un movement de stock
+    order_validated: Commande à livrér
+    movement_detail: Détail du mouvement
+    add_detail_movement_product: Ajouter un article en mouvement détail
+    stock_movement: Mouvement de stock
+    create_order: Créer une commande
+    add_detail_order: Ajouter une ligne de commande
+
+#form
+form:
+    total_price: Prix total
+    customer_name: Nom du client
+    in_progress: En cours
+    achieved: Achevée
+    current_order: Commande enregistrée
+    amount_order: Montant commande
+    quantity_to_order: Quantité à commander
+    order: Commander
+    date_create: Crée le
+    validated: Validé(e)
+    date_movement: Date du movement
+    choose_type_movement: Choisir le type du mouvement
+    choose_an_order: Choisir une commande
+    no_order_to_choose: Aucune commande à choisir
+    choose_a_product: Choisir un produit
+    quantity: Quantité
+    draft: Brouillon
+    draft_label_checkbox: Brouillon ( Décocher pour valider )
+    code_item_supplier: Code article fournisseur
+    category: Categorie
+    title: Titre
+    logout: Se déconnecter
+    create_by: Crée par
+    on_: le
+    last_update_by: Modifié dernièrement par
+    appointment_with: Rendez-vous avec
+    status: Status
+    date_appointment: Date du rendez-vous
+    appointment_time: Heure de rendez-vous
+    start_date: Date de début
+    end_date: Date fin
+    description: Description
+    appointment_type_name: Nom type de rendez-vous
+    appointment_duration: Durée rendez-vous
+    site_name: Nom du site
+    identify: Identifier
+    sign_in: Se connecter
+    diploma: Diplômes
+    other: Autre
+    code: Code
+    firstname: Prénom
+    password: Mot de passe
+    password_confirm: Confirmation
+    lastname: Nom
+    gender: Sexe
+    username: Nom d'utilisateur
+    phone: Téléphone
+    email: e-mail
+    action: Action
+    create: Créer
+    search: Rechercher
+    active: Actif
+    inactive: Inactif
+    back: Retour
+    postal: Code postal
+    address: Adresse
+    id_card: N° CIN
+    street: Rue
+    male: Homme
+    female: Femme
+    add: Ajouter
+    save: Enregistrer
+    cancel: Annuler
+    choose_file: Choisir un fichier
+    user_active_status: Statut
+    tape_here: Saisissez ici
+    choose_group: Choisissez un groupe
+    date_birth: Date de naissance
+    add_address: Ajouter une adresse
+    location: Localité
+    speciality: Specialité
+    add_speciality: Ajouter une specialité
+    choose_speciality: Choisir une specialité
+    address_description: Nom de l'addresse
+    longitude: Longitude
+    latitude: Latitude
+    group_user: Groupe d'utilisateur
+    user_description: Votre description
+    doctor_office: Cabinet médical
+    add_doctor_office: Ajouter cabinet médical
+    select_doctor_office: Choisissez un cabinet médical
+    add_profile_picture: Ajouter une photo de profil
+    select_language_skills: Choisissez vos languages
+    add_language_skills: Ajouter vos languages
+    language: Languages
+    region: Région
+    city: Ville
+    home_phone: Téléphone fixe
+    view_more: Voir plus
+    detail_user: Détail d'un utilisateur
+    no_address: Aucune addresse
+    delete_user: Supprimer cet utilisateur
+    yes: Oui
+    no: Non
+    delete: Supprimer
+    edit: Modifier
+    view_detail: Voir détails
+    medical_office_name: Nom du cabinet médical
+    comment: Commentaire
+    added_by: Ajouté(e) par
+    on: Le
+    updated_lately_by: Mofidié(e) dernièrement par
+    validate: Valider
+    patient_last_name: Nom du patient
+    patient_first_name: Prénom du patient
+    doctor_last_name: Nom du médecin
+    doctor_first_name: Prénom du médecin
+    saved: Enregistré(e)
+    to_validate: A validé(e)
+    validated: validé(e)
+    canceled: annulé(e)
+    patient_missing: Patient absent
+    create_item: Créer un article
+    item_type: Type d'article
+    pricing: Tarification
+    add_price: Ajouter un prix
+    price_ttc: Prix TTC
+    price_validity: Validité du prix
+    see_detail: Voir détails
+    unit_of_measure: Unité de mesure
+    brand: Marque
+    brand_title: Nom de la marque
+    brand_list: Liste des marques
+    add_brand: Créer un marque
+    stock_quantity: Quantité en stock
+    date_movement: Date du movement
+    type_movement: Type du movement
+
+#warning message
+warning:
+    login_already_exist: Ce login existe déja
+
+#message
+message:
+    item_added: Article ajouté avec succes
+    user_added: Utilisateur ajouté avec succes
+    user_edited: Utilisateur modifié avec succes
+    user_deleted: Utilisateur supprimé avec succes
+    item_deleted: Article supprimé avec succes
+    supplier_added: Fournisseur ajouté avec succes
+    supplier_edited: Fournisseur modifié avec succes
+    supplier_deleted: Fournisseur supprimé avec succes
+    item_updated: Article modifié avec succes
+    setting_updated: Paramètres modifié avec succes
+    account_redundancy: Ce pseudo ou cette addresse email est déjà associé à un compte!
+    no_current_price_today: Aucun prix valide pour aujourd'hui!
+    error_occurred: Une erreur durant l'opération!
+    movement_added: Mouvement de stock ajouté avec succes
+    movement_edited: Mouvement de stock modifié avec succes
+    movement_deleted: Mouvement de stock supprimé avec succes
+    item_ordered_successfully: Article commandé avec succes
+    item_already_in_order: Cette article est déja présente dans votre commande en cours
+    order_added: Commande enregistrée avec succes
+    order_edited: Commande modifiée avec succes
+    order_validated: Commande validée avec succes
+    order_deleted: Commande supprimé avec succes
+
+#confirm
+confirm:
+    message_removal: Voulez vous supprimer définitivement %name% ?
+
+account_recover:
+    check_email: Un e-mail a été envoyé à email. Ceci contient un lien d'activation. Cliquez sur ce lien pour activer votre compte.
+    confirmed: Félicitation username, votre compte est maintenant activé
+    message: Votre nouveau mot de passe est password - veuillez cliquer sur ce lien pour confirmer confirmationUrl.
+    password_resetted: Votre nouveau mot de passe a été réinitialisé avec succes.

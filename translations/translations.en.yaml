@@ -1,0 +1,211 @@
+#general
+general:
+    detail_order: Order's detail
+    our_product: Our product(s)
+    create_my_account: Create my account
+    customer_role: Customer
+    available: Available
+    not_available: Sold out
+    my_order: My orders
+    customer_subscribe: Customer subscription
+    administration: Administration
+    welcome_user: Welcome name!
+    home: Home
+    product_list: Product's list
+    product: Products
+    supplier: Suppliers
+    confirmation: Confirmation
+    Stock: Stock
+    manage_product: Manage product
+    customer: Customer
+    manage_supplier: Manage supplier
+    manage_stock: Stock management
+    add_product: Add product
+    edit_product: Edit the product
+    authentication: Authentication
+    lost_your_password: password forgotten
+    product_detail: Product's detail
+    list_supplier: Supplier list
+    add_supplier: Add a supplier
+    detail_supplier: Supplier's detail
+    supplier_brand_list: Supplier's brand list
+    edit_supplier: Edit a supplier
+    list_movement_stock: Stock movement list
+    add_movement_stock: Add stock movement
+    edit_movement_stock: Edit stock movement
+    order_validated: Order to deliver
+    movement_detail: Movement's detail
+    add_detail_movement_product: Add product as movement detail
+    stock_movement: Stock movement
+    create_order: Create an order
+    add_detail_order: Add a product as order detail
+
+#form
+form:
+    total_price: Total price
+    customer_name: Customer's name
+    in_progress: In progress
+    achieved: Achieved
+    current_order: Order saved
+    amount_order: Amount order
+    quantity_to_order: Quantity to order
+    order: Order
+    date_create: Create on
+    validated: Validated
+    date_movement: Movement date
+    choose_type_movement: Choose the movement type
+    choose_an_order: Choose an order
+    no_order_to_choose: No order to choose
+    item_identity: Product's identity
+    choose_a_product: Choose a product
+    quantity: Quantity
+    draft: Draft
+    draft_label_checkbox: Draft ( uncheck to validate )
+    code_item_supplier: Item's code supplier
+    category: Category
+    title: Title
+    logout: Logout
+    create_by: Created by
+    on_: on
+    last_update_by: Changed recently by
+    appointment_with: Appointment with
+    status: Status
+    date_appointment: Appointment's date
+    appointment_time: Appointment's time
+    start_date: Start date
+    end_date: End date
+    description: Description
+    appointment_type_name: Appointment type's name
+    appointment_duration: Appointment duration
+    site_name: Site's name
+    identify: Identify
+    sign_in: Sign in
+    diploma: Diploma
+    other: Other
+    code: Code
+    firstname: Firstname
+    password: Password
+    password_confirm: Confirmation
+    lastname: Lastname
+    gender: Gender
+    username: Username
+    phone: Phone number
+    email: E-mail
+    action: Action
+    create: Create
+    search: Search
+    active: Active
+    inactive: Inactive
+    back: Back
+    postal: Postal code
+    address: Address
+    id_card: Id card
+    street: Street
+    male: Man
+    female: Woman
+    add: Add
+    save: Save
+    cancel: Cancel
+    choose_file: Choose a file
+    user_active_status: Status
+    tape_here: Tape here
+    choose_group: Choose a group
+    date_birth: Date of birth
+    add_address: Add an address
+    location: Location
+    speciality: Speciality
+    add_speciality: Add a speciality
+    choose_speciality: Choose one speciality
+    address_description: Address name
+    longitude: Longitude
+    latitude: Latitude
+    group_user: User's group
+    user_description: Your description
+    doctor_office: Doctor's office
+    add_doctor_office: Add doctor office
+    select_doctor_office: Select doctor office
+    add_profile_picture: Add profile picture
+    select_language_skills: Select language skills
+    add_language_skills: Add language skills
+    language: Languages
+    region: Region
+    city: City
+    home_phone: Home number's phone
+    view_more: View more
+    yes: Yes
+    no: No
+    delete: Delete
+    edit: Edit
+    view_detail: View details
+    medical_office_name: Medical office's name
+    comment: Comment
+    added_by: Added by
+    on: on
+    updated_lately_by: Updated lately by
+    validate: Validate
+    patient_last_name: Patient's name
+    patient_first_name: Patient's first name
+    doctor_last_name: Doctor's name
+    doctor_first_name: Doctor's first name
+    saved: Saved
+    to_validate: To validate
+    validated: Validated
+    canceled: Canceled
+    patient_missing: Patient missing
+    create_item: Create an item
+    item_type: Item's type
+    pricing: Pricing
+    add_price: Add price
+    price_ttc: Price with tax
+    price_validity: Price validity
+    see_detail: See details
+    delete_item: Delete an item
+    unit_of_measure: Unit of measure
+    brand: Brand
+    brand_title: Brand name
+    brand_list: Brand's list
+    add_brand: Create a brand
+    stock_quantity: Quantity stock
+    date_movement: Movement's date
+    type_movement: Movement's type
+
+#warning message
+warning:
+    login_already_exist: This login already exists
+
+#message
+message:
+    item_added: Item added successfully
+    user_added: User added successfully
+    user_edited: User updated successfully
+    user_deleted: User deleted successfully
+    item_deleted: Item deleted successfully
+    med_office_added: Medical office added successfully
+    med_office_edited: Medical office updated successfully
+    item_updated: Item updated successfully
+    med_office_deleted: Medical office deleted successfully
+    user_profile_edited: User's profile updated successfully
+    user_password_edited: User's password updated successfully
+    setting_updated: Setting updated successfully,
+    account_redundancy: An account with the same username or email already exists!
+    no_current_price_today: No valid price for today!
+    error_occurred: An error occurred during the operation!
+    movement_added: Stock movement added successfully
+    movement_edited: Stock movement updated successfully
+    movement_deleted: Stock movement deleted successfully
+    item_ordered_successfully: Product ordered successfully
+    item_already_in_order: Product already exist in your current order
+    order_added: Order saved successfully
+    order_edited: Order edited successfully
+    order_validated: Order validated successfully
+    order_deleted: Order deleted successfully
+
+#confirm
+confirm:
+    message_removal: Do you really want to delete definitively name ?
+
+account_recover:
+    check_email: An email has been sent to %email%. It contains an activation link you must click to activate your account.
+    confirmed: Congrats %username%, your account is now activated.
+    message: Your new password is pwd - please clic on this link to confirm confirmationUrl.
+    password_resetted: Your password has been resetted successfully.

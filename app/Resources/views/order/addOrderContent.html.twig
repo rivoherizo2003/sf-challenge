@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-sm">
+        <div class="form-group">
+            <label class="col-form-label w-100 text-info">{{ 'form.date_create'|trans({}, 'translations') }}</label>
+            {{ 'now'|date('Y-m-d') }}
+        </div>
+    </div>
+    <div class="col-sm">
+        <div class="form-group">
+            {{ form_label(p_frmForm.ordComment,'form.comment'|trans({}, 'translations') ) }}:
+            {{ form_widget(p_frmForm.ordComment) }}
+        </div>
+    </div>
+    <div class="col-sm">
+        <div class="form-group">
+            <label class="col-form-label w-100 text-info">{{ 'form.amount_order'|trans({}, 'translations') }} MGA:</label>
+            <span class="sp-amount-order form-control">0</span>
+        </div>
+    </div>
+    <div class="col-sm">
+        {{ form_widget(p_frmForm.ordIsDraft) }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm">
+        <span class="text-success h5"><i class="material-icons md-24">device_hub</i> {{ 'general.detail_order'|trans({}, 'translations') }}</span>
+    </div>
+    <div class="col-sm">
+        <a href="#" class="add_order_detail_row" onclick="">
+            <i class="material-icons md-18">open_in_browser</i> {{ 'general.add_detail_order'|trans({}, 'translations') }}
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm">
+        <div class="container-fluid div-order-detail" data-prototype="
+                                                                {% filter escape %}
+                                                                    {% include 'orderDetail/orderDetailPrototype.html.twig' with {'p_frmForm': p_frmForm.ordOrderDetailLists.vars.prototype} %}
+																{% endfilter %}
+																	">
+            {% for l_oddOrderDetail in p_frmForm.ordOrderDetailLists %}
+                <div class="row border m-2">
+                    <div class="col-sm">
+                        <div class="container-fluid">
+                            {% include 'orderDetail/orderDetailPrototype.html.twig' with {'p_frmForm': l_oddOrderDetail} %}
+                        </div>
+                    </div>
+                    {#<a href="#" class="remove-tag text-red"><i class="material-icons md-18 md-red">delete</i></a>#}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

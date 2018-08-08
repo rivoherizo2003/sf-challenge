@@ -1,0 +1,91 @@
+{% extends 'default/index.html.twig' %}
+{% block title %}{{ 'general.customer_subscribe'|trans({}, 'translations') }}{% endblock %}
+{% block additionalStyle %}
+    {#<link href="{{ asset('build/css/signIn.css') }}" rel="stylesheet">#}
+{% endblock %}
+
+{% form_theme p_frmForm 'bootstrap_4_layout.html.twig' %}
+{% block menu1 %}
+
+{% endblock %}
+{% block maincontent %}
+    <main role="main" class="container p-2">
+        <div class="row flex-nowrap justify-content-between align-items-center pb-3">
+            <div class="col-sm">
+                <h2 class="display-5">{{ 'general.customer_subscribe'|trans({}, 'translations') }}</h2>
+            </div>
+        </div>
+        {{ form_start(p_frmForm) }}
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        {{ form_label(p_frmForm.usrLastName,'form.lastname'|trans({}, 'translations') ) }}:
+                        {{ form_widget(p_frmForm.usrLastName) }}
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="form-group">
+                        {{ form_label(p_frmForm.usrFirstName,'form.firstname'|trans({}, 'translations') ) }}:
+                        {{ form_widget(p_frmForm.usrFirstName) }}
+                    </div>
+                </div>
+                <div class="col-sm"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        {{ form_label(p_frmForm.usrGender,'form.gender'|trans({}, 'translations') ) }}:
+                        {{ form_widget(p_frmForm.usrGender) }}
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="form-group">
+                        {{ form_label(p_frmForm.usrMail,'form.email'|trans({}, 'translations') ) }}:
+                        {{ form_widget(p_frmForm.usrMail) }}
+                    </div>
+                </div>
+                <div class="col-sm"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        {{ form_label(p_frmForm.password.first,'form.password'|trans({}, 'translations') ) }}:
+                        {{ form_widget(p_frmForm.password.first) }}
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="form-group">
+                        {{ form_label(p_frmForm.password.second,'form.password_confirm'|trans({}, 'translations') ) }}:
+                        {{ form_widget(p_frmForm.password.second) }}
+                    </div>
+                </div>
+                <div class="col-sm"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        {{ form_label(p_frmForm.usrPhone,'form.phone'|trans({}, 'translations') ) }}:
+                        {{ form_widget(p_frmForm.usrPhone) }}
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="form-group">
+                        {{ form_label(p_frmForm.usrAddress,'form.address'|trans({}, 'translations') ) }}:
+                        {{ form_widget(p_frmForm.usrAddress) }}
+                    </div>
+                </div>
+                <div class="col-sm"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                </div>
+                <div class="col-sm text-right">
+                    <button type="submit" class="btn btn-sm btn-outline-success">{{ 'general.create_my_account'|trans({}, 'translations') }}</button>
+                </div>
+                <div class="col-sm"></div>
+            </div>
+            {{ form_row(p_frmForm._token) }}
+            {{ form_rest(p_frmForm) }}
+        {{ form_end(p_frmForm, {'render_rest':false}) }}
+    </main>
+{% endblock %}

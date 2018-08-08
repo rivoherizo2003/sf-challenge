@@ -1,0 +1,71 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm">
+            <div class="form-group">
+                <label class="col-form-label w-100 text-info"> {{ 'form.code'|trans({}, 'translations') }}:</label>
+                {{ p_supSupplier.splCode }}
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+                <label class="col-form-label w-100 text-info"> {{ 'form.title'|trans({}, 'translations') }}:</label>
+                {{ p_supSupplier.splName }}
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group" >
+                <label class="col-form-label w-100 text-info"> {{ 'form.address'|trans({}, 'translations') }}:</label>
+                {{ p_supSupplier.splAddress }}
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+                <label class="col-form-label w-100 text-info"> {{ 'form.phone'|trans({}, 'translations') }}:</label>
+                {{ p_supSupplier.splPhone }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="form-group">
+                <label class="col-form-label w-100 text-info">{{ 'form.email'|trans({}, 'translations') }}</label>
+                {{ p_supSupplier.splMail }}
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <span class="text-success h5"><i class="material-icons md-24">location_on</i> {{ 'general.supplier_brand_list'|trans({}, 'translations') }}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm pt-3 pb-3">
+            {% set l_sBrandList = "" %}
+            {% if p_supSupplier.splBrandLists is not null %}
+                {% for brdBrand in p_supSupplier.splBrandLists %}
+                    {% if l_sBrandList == "" %}
+                    {% set l_sBrandList = brdBrand.brdName %}
+                    {% else %}
+                        {% set l_sBrandList = l_sBrandList~", "~brdBrand.brdName %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            {{ l_sBrandList }}
+        </div>
+    </div>
+</div>
+
+
+

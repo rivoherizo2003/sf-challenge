@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    {% if p_arrOrderDetail is not null %}
+        <div class="row">
+            <div class="col-sm-4">
+                <label class="col-form-label w-100 text-info"> {{ 'form.item_identity'|trans({}, 'translations') }}</label>
+
+            </div>
+            <div class="col-sm-2">
+                <label class="col-form-label w-100 text-info"> {{ 'form.quantity'|trans({}, 'translations') }}</label>
+
+            </div>
+            <div class="col-sm-3">
+                <label class="col-form-label w-100 text-info"> {{ 'form.price_ttc'|trans({}, 'translations') }}</label>
+
+            </div>
+            <div class="col-sm-3">
+                <label class="col-form-label w-100 text-info"> {{ 'form.total_price'|trans({}, 'translations') }}</label>
+
+            </div>
+        </div>
+        {% for l_oddOrderDetail in p_arrOrderDetail %}
+            <div class="row border-bottom pt-1">
+                <div class="col-sm-4">
+                    {{ l_oddOrderDetail.oddItem.itmTitle }}
+                </div>
+                <div class="col-sm-2">
+                    {{ l_oddOrderDetail.oddQuantity }} {% if l_oddOrderDetail.oddUnitOfMeasure is not null %}{{ l_oddOrderDetail.oddUnitOfMeasure.uomCode }}{% endif %}
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        MGA {{ l_oddOrderDetail.oddPrice|number_format(2, '.', ' ') }}
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        {% set l_fTotalPrice = l_oddOrderDetail.oddPrice * l_oddOrderDetail.oddQuantity %}
+                        MGA {{ l_fTotalPrice|number_format(2, '.', ' ') }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+
+

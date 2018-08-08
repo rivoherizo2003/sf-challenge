@@ -1,0 +1,45 @@
+{% for l_mvtMovement in p_arrMovement %}
+    <div class="row border-bottom">
+        <div class="col-sm-2">
+            <label class="col-form-label text-info"> {{ 'form.code'|trans({}, 'translations') }}:</label>
+            {{ l_mvtMovement.mvtCode }}
+        </div>
+        <div class="col-sm-3">
+            <label class="col-form-label text-info"> {{ 'form.date_movement'|trans({}, 'translations') }}:</label>
+            {{ l_mvtMovement.mvtDate|date('Y-m-d') }}
+        </div>
+        <div class="col-sm-4">
+            <label class="col-form-label text-info"> {{ 'form.type_movement'|trans({}, 'translations') }}:</label>
+            {{ l_mvtMovement.mvtMovementType.tpmDescription }}
+            <label class="col-form-label text-info"> {{ 'form.status'|trans({}, 'translations') }}:</label>
+            {% if l_mvtMovement.mvtIsDraft %}
+                {{ 'form.draft'|trans({}, 'translations') }}
+            {% else %}
+                {{ 'form.validated'|trans({}, 'translations') }}
+            {% endif %}
+        </div>
+        <div class="col-sm-3">
+            <div class="col-sm">
+                <div class="float-right">
+                    {% if l_mvtMovement.mvtIsDraft == true %}
+                        <a class="btn" href="{{ path('bcs_edit_movement',{'p_iIdMovement':l_mvtMovement.id}) }}" title="{{ 'general.edit_supplier'|trans({}, 'translations') }}">
+                            <i class="material-icons md-orange md-18">create</i>
+                        </a>
+                    {% endif %}
+                    {% if l_mvtMovement.mvtIsDraft == true %}
+                        <a class="btn btn-item-delete" data-target="#div-modal" data-toggle="modal"
+                            data-heading-title="{{ 'general.confirmation'|trans({}, 'translations') }}"
+                            data-body-content="{{ 'confirm.message_removal'|trans({'name':l_mvtMovement.mvtCode}, 'translations') }}"
+                            data-url="{{ path('bcs_delete_movement',{'p_iIdMovement':l_mvtMovement.id} ) }}"
+                        >
+                            <i class="material-icons md-red md-18">delete</i>
+                        </a>
+                    {% endif %}
+                    <a class="btn" href="{{ path('bcs_show_movement',{'p_iIdMovement':l_mvtMovement.id}) }}" title="{{ 'general.detail_supplier'|trans({}, 'translations') }}">
+                        <i class="material-icons md-blue md-18">description</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}

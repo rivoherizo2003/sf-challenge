@@ -1,0 +1,6 @@
+message:
+    mail_already_exist: This mail already exists
+    password_not_match: Password's field should match
+    mandatory_field: Please fill this field
+    number_field: Please tape number
+    minimum_character: Please tape more than 6 characters

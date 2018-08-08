@@ -1,0 +1,41 @@
+{% for l_itItem in p_arrItem %}
+    <div class="row border-bottom">
+        <div class="col-sm-2">
+            <label class="col-form-label text-info"> {{ 'form.code'|trans({}, 'translations') }}:</label>
+            {{ l_itItem.itmCode }}
+        </div>
+        <div class="col-sm-3">
+            <label class="col-form-label text-info"> {{ 'form.title'|trans({}, 'translations') }}:</label>
+            {{ l_itItem.itmTitle }}
+            <label class="col-form-label text-info"> {{ 'form.description'|trans({}, 'translations') }}:</label>
+            {{ l_itItem.itmDescription }}
+        </div>
+        <div class="col-sm-4">
+            <label class="col-form-label text-info"> {{ 'form.price_ttc'|trans({}, 'translations') }}:</label>
+            MGA {{ l_itItem.itmPriceWithDuty|number_format(2, '.', ' ') }}&nbsp;&nbsp;
+            <label class="col-form-label text-info"> {{ 'form.status'|trans({}, 'translations') }}:</label>
+            {% if l_itItem.itmStockQuantity > 0 %}
+                {{ 'general.available'|trans({}, 'translations') }}
+            {% else %}
+                {{ 'general.not_available'|trans({}, 'translations') }}
+            {% endif %}
+        </div>
+        <div class="col-sm-3">
+            <div class="col-sm">
+                <div class="float-right">
+                    {% if l_itItem.itmStockQuantity > 0 %}
+                        <a class="btn" href="{{ path('cus_show_product',{'p_iIdItem':l_itItem.id}) }}" title="{{ 'form.order'|trans({}, 'translations') }}">
+                            <i class="material-icons md-blue md-18">add_shopping_cart</i> {{ 'form.order'|trans({}, 'translations') }}
+                        </a>
+                    {% endif %}
+                    <a class="btn" href="{{ path('cus_show_product',{'p_iIdItem':l_itItem.id}) }}" title="{{ 'general.product_detail'|trans({}, 'translations') }}">
+                        <i class="material-icons md-blue md-18">description</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% if p_arrItem|length == 0 %}
+    <h3>No product available</h3>
+{% endif %}

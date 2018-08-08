@@ -1,0 +1,12 @@
+{% extends 'admin/homeAdmin.html.twig' %}
+{% block title %}{{ 'general.administration'|trans({}, 'translations') }}{% endblock %}
+{% block additionalStyle %}
+    {#<link href="{{ asset('build/css/signIn.css') }}" rel="stylesheet">#}
+{% endblock %}
+{% block activeHome %}active{% endblock %}
+
+{% block maincontent %}
+    <main role="main" class="container">
+        Home admin
+    </main>
+{% endblock %}

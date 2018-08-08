@@ -1,0 +1,39 @@
+{#{% block _usrAddressList_entry_widget %}#}
+<div class="row">
+	<div class="col-sm-3">
+		<div class="form-group">
+			{{ form_label(p_frmForm.oddItem,'form.item_identity'|trans({}, 'translations') ) }}:
+			{{ form_widget(p_frmForm.oddItem) }}
+		</div>
+	</div>
+	<div class="col-sm-2">
+		<div class="form-group">
+            {{ form_label(p_frmForm.oddStockQuantity,'form.stock_quantity'|trans({}, 'translations') ) }}:
+            {{ form_widget(p_frmForm.oddStockQuantity) }}
+		</div>
+	</div>
+	<div class="col-sm-2">
+		<div class="form-group">
+            {{ form_label(p_frmForm.oddQuantity,'form.quantity_to_order'|trans({}, 'translations') ) }}:
+            {{ form_widget(p_frmForm.oddQuantity) }}
+		</div>
+	</div>
+	<div class="col-sm-2">
+		<div class="form-group">
+            {{ form_label(p_frmForm.oddUnitOfMeasure,'form.unit_of_measure'|trans({}, 'translations') ) }}:
+            {{ form_widget(p_frmForm.oddUnitOfMeasure) }}
+		</div>
+	</div>
+	<div class="col-sm-3">
+		<div class="form-group">
+            {{ form_label(p_frmForm.oddPrice,'form.price_ttc'|trans({}, 'translations') ) }}:
+            {{ form_widget(p_frmForm.oddPrice) }}
+		</div>
+	</div>
+	<div class="col-sm-2">
+		<div class="form-group">
+			<label class="col-form-label w-100">{{ 'form.total_price'|trans({}, 'translations') }} MGA:</label>
+			<span class="sp-total-price">0</span>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,19 @@
+.display-5{
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+
+
+.text-0_8rem{
+    font-size: 0.8rem!important;
+}
+
+.text-0_7rem{
+    font-size: 0.7rem!important;
+}
+
+.text-fade-gray{
+    color: #979b9e !important;
+}
